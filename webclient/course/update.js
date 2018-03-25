@@ -19,6 +19,9 @@ class UpdateCouser extends Component {
     setCourseName(e){ 
         this.setState({course_name:e.target.value});
     }
+    setCourseDesc(e){
+        this.setState({course_desc:e.target.value});   
+    }
     
     handleFormSubmit(e){
         e.preventDefault();
@@ -32,7 +35,8 @@ class UpdateCouser extends Component {
                 'Content-Type':'application/json'
             },
             body:JSON.stringify({
-                course_name:this.state.course_name
+                course_name:this.state.course_name,
+                course_desc:this.state.course_desc
             })
             })
                     .then((res)=>res.json())
@@ -61,6 +65,10 @@ class UpdateCouser extends Component {
         let flag = true;
         if(this.state.course_name == undefined || this.state.course_name == ''){
             errors['course_name'] = "course name cannot be blank!";
+            flag = false;
+        }
+        if(this.state.course_desc === undefined || this.state.course_desc === ''){
+            errors['course_desc'] = "Course desc cannot be blank!";
             flag = false;
         }
        
@@ -94,6 +102,11 @@ class UpdateCouser extends Component {
                     <input type="text" class="form-control" id="name" onChange={this.setCourseName} placeholder="Enter name" name="name" value={this.state.course_name} />
                     <span style={{color:"#c53737"}}>{this.state.errors['course_name']}</span>
                 </div>
+                <div class="form-group">
+                    <label for="email">Course Desc:</label>
+                    <textarea class="form-control" id="name" onChange={this.setCourseDesc.bind(this)} placeholder="Enter name" name="name" value={this.state.course_desc} />
+                    <span style={{color: "#c53737"}}>{this.state.errors["course_desc"]}</span>
+                </div>    
                 <button onClick={this.handleFormSubmit} class="btn btn-warning">Update</button>
                 </form>
          </div>

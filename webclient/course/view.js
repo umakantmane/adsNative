@@ -26,6 +26,7 @@ class View extends Component{
                 <ul class="list-group">
                 <li class="list-group-item">ID: {this.state.data.id}</li>
                 <li class="list-group-item">Course Name: {this.state.data.course_name}</li>
+                <li class="list-group-item">Course Desc: {this.state.data.course_desc}</li>
                 <li class="list-group-item">created Date: {this.state.data.created_at}</li>
                 </ul>
             </div>

@@ -26,7 +26,7 @@ SECRET_KEY = '+089%jjj352uka6#34&%iby=69s&4a4b7u&_2kb3+0ekivtt0p'
 DEBUG = True
 CORS_ORIGIN_ALLOW_ALL = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['reactdjango.herokuapp.com', '127.0.0.1:8000']
 
 
 # Application definition
@@ -135,4 +135,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATIC_URL = '/static/'

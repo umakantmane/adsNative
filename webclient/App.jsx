@@ -92,10 +92,11 @@ class Logout extends React.Component {
         if(this.state.logOutFlag) return <Redirect to='/login' />
         return(
                 <ul class="nav navbar-nav navbar-right">
-                <li><Link to={'/user_enrollemt'}>user_enrollemt</Link></li>
+                <li><Link to={'/dashboard'} >Home</Link></li>
+                
+                <li><Link to={'/user_enrollemt'}>My Enrollemt</Link></li>
                 <li><Link to={'/course_enroll'}>Course Enroll</Link></li>
                 <li><Link to={'/course_list'}>Course List</Link></li>
-                <li><Link to={'/dashboard'} ><span class="glyphicon glyphicon-log-in"></span>Home</Link></li>
                 <li><Link to={'/logout'} onClick={this.logOutFunc.bind(this) } ><span class="glyphicon glyphicon-log-in"></span>Logout({this.props.data})</Link></li>
               </ul>
         );

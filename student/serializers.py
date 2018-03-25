@@ -8,7 +8,7 @@ class CourseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Course
-        fields = ('id', 'course_name', 'created_at')
+        fields = ('id', 'course_name', 'course_desc','created_at')
 
 def isUserExists(userName):
 

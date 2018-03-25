@@ -46,7 +46,8 @@ class Index extends Component {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>UserName</th>
+                        <th>Course Name</th>
+                        <th>Course Desc</th>
                         <th>Create Date</th>
                         <th>ACtion</th>
                     </tr>
@@ -57,6 +58,7 @@ class Index extends Component {
                     return <tr>
                         <td>{object.id}</td>
                         <td>{object.course_name}</td>
+                        <td>{object.course_desc}</td>
                         <td>{object.created_at}</td>
                         <td>
                         <span><Link to={'/course_update/'+object.id} class="btn btn-warning btn-xs">UPDATE&nbsp;</Link></span>&nbsp;

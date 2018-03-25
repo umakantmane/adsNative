@@ -42,7 +42,6 @@ class MyEnrollments extends Component {
         return(
                 
         <div>
-            <Link to={'/create_course'} class='btn btn-success btn-sm' >Create</Link><p></p>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -58,8 +57,6 @@ class MyEnrollments extends Component {
                         <td>{object.id}</td>
                         <td>{object.course_name}</td>
                         <td>
-                        <span><Link to={'/course_update/'+object.id} class="btn btn-warning btn-xs">UPDATE&nbsp;</Link></span>&nbsp;
-                        <span><Link to={'/course_view/'+object.id} class="btn btn-info btn-xs">VIEW&nbsp;</Link></span>&nbsp;
                         <span id={object.id} onClick={this.clickFunction.bind(this, object.id)} class="btn btn-danger btn-xs">Cancel Enrollment&nbsp;</span>
                         </td>
                     </tr>   
