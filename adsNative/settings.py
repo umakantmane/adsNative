@@ -91,10 +91,8 @@ WSGI_APPLICATION = 'adsNative.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'adsnative',
-        'USERNAME':'umakant',
-        'PASSWORD':'welcome@123'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
