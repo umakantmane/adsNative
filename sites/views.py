@@ -18,6 +18,20 @@ class SignUp(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class CreateSuperUser(APIView):
+
+    def post(self, request):
+        serializer = SignUpSerializer(data=request.data)
+        if serializer.is_valid():
+            user = User()
+            user.username = serializer.data['username']
+            user.set_password(serializer.data['password_one'])
+            user.is_superuser = True
+            user.is_staff = True
+            user.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class SignIn(APIView):
 
