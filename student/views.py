@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.http import JsonResponse
 
+#
 class CourseList(APIView):
 
     def get(self, request):
