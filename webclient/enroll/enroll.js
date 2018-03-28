@@ -33,20 +33,22 @@ class Enrolle extends Component {
                 <thead>
                     <tr>
                       
-                        <th>CourseName</th>
+                        <th>Course Name</th>
+                        <th>Course Desc</th>
                         <th>Create Date</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                 {this.state.getData.map(function(object, i){
-                    
+
                     return <tr>
-                     
+
                         <td>{object.course_name}</td>
+                        <td>{object.course_desc}</td>
                         <td>{object.created_at}</td>
                         <td>
-                        <span><Link to={'/course_enrollment/'+object.id} target="_blank" class="btn btn-warning btn-xs">Enroll for this course&nbsp;</Link></span>
+                        <span><Link to={'/course_enrollment/'+object.id} class="btn btn-warning btn-xs">Enroll for this course&nbsp;</Link></span>
                         </td>
                     </tr>   
                 }, this)}

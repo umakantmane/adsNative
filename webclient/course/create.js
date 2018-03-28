@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 import params from './../config/config';
 
 class CreateCourse extends Component{
-//https://stackoverflow.com/questions/41296668/reactjs-form-input-validation
 	constructor(props){
             super(props);
             this.state = {

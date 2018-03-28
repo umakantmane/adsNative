@@ -10,17 +10,17 @@ class CouserEnrollment extends Component {
             getData:{},
             errors:{},
             isChecked:true,
-            redirectToCurd:false
+            redirectoCrud:false
         };
-        
+
         this.setCourseName = this.setCourseName.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
-    
-    setCourseName(e){ 
+
+    setCourseName(e){
         this.setState({course_name:e.target.value});
     }
-    
+
     setEnrollment(e){
         this.setState({
             isChecked: !this.state.isChecked,
@@ -29,9 +29,9 @@ class CouserEnrollment extends Component {
 
     handleFormSubmit(e){
         e.preventDefault();
-        
+
         if(this.validateForm()) {
-            
+
            fetch(params.apiUrl + '/enrollment?user_id=' + localStorage.getItem('user_id'), {
                     method: 'POST',
                     headers: {
@@ -52,25 +52,26 @@ class CouserEnrollment extends Component {
                         this.setState({errors:errors})
 
                     } else if(!responseJson.hasOwnProperty('id')){
-                        
+
                         for(var i in responseJson){
                             errors[i] = responseJson[i][0];
                         }
                         this.setState({errors:errors})
+                        this.setState({redirectoCrud:true});
                     }else{
 
-                      
-                      this.setState({redirectoCrud:true}); 
-                    } 
-                    
+
+                      this.setState({redirectoCrud:true});
+                    }
+
                 })
                 .catch((error) => {
                     console.error(error);
                 });
-            
+
         }else console.log("bad")
     }
-    
+
     validateForm(){
         let errors = {};
         let flag = true;
@@ -78,16 +79,16 @@ class CouserEnrollment extends Component {
             errors['checkbox'] = "Please mark checkbox";
             flag = false;
         }
-       
+
         this.setState({errors:errors});
         return flag;
     }
-    
+
     componentDidMount(){
         fetch(params.apiUrl + '/course/'+this.props.match.params.id)
           .then(res => res.json())
           .then(res => {
-              console.log(res); 
+              console.log(res);
               this.setState(res);
         });
     }
@@ -96,14 +97,17 @@ class CouserEnrollment extends Component {
         fields[field] = e.target.value;
         this.setState(getData:fields);
     }
-    
+
    render() {
-        
-        if(this.state.redirectToCurd) return <Redirect to='/course_enroll' />
+        var data = '';
+        if(this.state.redirectoCrud) {
+            data =  <div class="alert alert-success">You have enrolled successfully!</div>;
+        }
         if(!this.state.getData) return <h2>Loading...</h2>
       return (
          <div>
             <form>
+            {data}
                 <div class="form-group">
                     <label for="email">Course Name:</label>
                     <input type="text" class="form-control" id="name"  placeholder="Enter name" name="name" value={this.state.course_name} disabled/>
@@ -111,7 +115,7 @@ class CouserEnrollment extends Component {
                 </div>
                 <div class="form-group">
                     <label for="email">Course Desc:</label>
-                    <textarea class="form-control" id="name" placeholder="Enter name" name="name" value={this.state.course_name} disabled/>
+                    <textarea class="form-control" id="name" placeholder="Enter name" name="name" value={this.state.course_desc} disabled/>
                 </div>
                 <div class="checkbox">
                     <label><input type="checkbox" checked={this.state.isChecked} onChange={this.setEnrollment.bind(this)} value={this.state.isEnroll}/></label>
