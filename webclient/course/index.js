@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Switch, Route, Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-
+import params from './../config/config';
 
 class Index extends Component {
     
@@ -16,7 +16,7 @@ class Index extends Component {
     clickFunction(id){
         
         if(confirm("Are you sure do delete this record!")) {   
-            fetch('http://localhost:8000/course/' + id, {method: "DELETE"})
+            fetch(params.apiUrl + '/course/' + id, {method: "DELETE"})
                     .then(res=>{
                        this.componentDidMount();
             })
@@ -26,7 +26,7 @@ class Index extends Component {
         }
     };
     componentDidMount(){
-        fetch('http://localhost:8000/course')
+        fetch(params.apiUrl + '/course')
             .then(res => res.json())
             .then(res => {                  
                 this.setState({

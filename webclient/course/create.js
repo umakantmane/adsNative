@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-
+import params from './../config/config';
 
 class CreateCourse extends Component{
 //https://stackoverflow.com/questions/41296668/reactjs-form-input-validation
@@ -43,7 +43,7 @@ class CreateCourse extends Component{
              event.preventDefault();
             if(this.handleFormValidation()){
 
-                fetch('http://localhost:8000/course', {
+                fetch(params.apiUrl + '/course', {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',

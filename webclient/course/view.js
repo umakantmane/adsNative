@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import params from './../config/config';
 
 class View extends Component{
     
@@ -10,7 +11,7 @@ class View extends Component{
         }
         componentDidMount(){
             
-            fetch("http://localhost:8000/course/"+this.props.match.params.id)
+            fetch(params.apiUrl + "/course/"+this.props.match.params.id)
                     .then((res)=>res.json())
                     .then((res)=>{
                     

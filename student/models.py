@@ -20,6 +20,10 @@ class CorseEnrollment(models.Model):
     course = models.ForeignKey(Course, on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+
+        return "User:{0}\tCourse:{1}".format(self.user, self.course)
+
     class Meta:
         db_table = 'course_enrollment'
 

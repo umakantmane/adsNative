@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-
+import params from './../config/config';
 
 class UpdateCouser extends Component {
     
@@ -28,7 +28,7 @@ class UpdateCouser extends Component {
         
         if(this.validateForm()) {
             
-            fetch('http://localhost:8000/course/'+this.props.match.params.id+'/',{
+            fetch(params.apiUrl + '/course/'+this.props.match.params.id+'/',{
             method:'PUT',
             headers:{
                 Accept:'application/json',
@@ -57,7 +57,7 @@ class UpdateCouser extends Component {
                 console.log("error", error);
             });
             
-        }else console.log("bad")
+        }
     }
     
     validateForm(){
@@ -77,7 +77,7 @@ class UpdateCouser extends Component {
     }
     
     componentDidMount(){
-        fetch('http://localhost:8000/course/'+this.props.match.params.id)
+        fetch(params.apiUrl + '/course/'+this.props.match.params.id)
           .then(res => res.json())
           .then(res => {
               console.log(res); 

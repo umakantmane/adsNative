@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Switch, Route, Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-
+import params from './../config/config';
 
 class MyEnrollments extends Component {
     
@@ -16,7 +16,7 @@ class MyEnrollments extends Component {
     clickFunction(id){
         
         if(confirm("Are you sure do delete this record!")) {   
-            fetch('http://localhost:8000/student_enroll_delete/' + id, {method: "DELETE"})
+            fetch(params.apiUrl + '/student_enroll_delete/' + id, {method: "DELETE"})
                     .then(res=>{
                        this.componentDidMount();
             })
@@ -26,7 +26,7 @@ class MyEnrollments extends Component {
         }
     };
     componentDidMount(){
-        fetch('http://localhost:8000/studentenroll/'+localStorage.getItem('user_id'))
+        fetch(params.apiUrl + '/studentenroll/'+localStorage.getItem('user_id'))
             .then(res => res.json())
             .then(res => {
             console.log(res.data);                  

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-
+import params from './../config/config';
 
 class Login extends Component{
 
@@ -47,7 +47,7 @@ class Login extends Component{
 		 event.preventDefault();
             if(this.handleFormValidation()){
 
-            	fetch('http://localhost:8000/signin', {
+            	fetch(params.apiUrl + '/signin', {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
